@@ -1,0 +1,20 @@
+[
+    {
+        "station_name": "Hilltop",
+        "date": "2026-01-01",
+        "temperature_c": 18.2,
+        "rainfall_mm": 1.1
+    },
+    {
+        "station_name": "Hilltop",
+        "date": "2026-01-02",
+        "temperature_c": 19.0,
+        "rainfall_mm": 0
+    },
+    {
+        "station_name": "",
+        "date": "2026-01-03",
+        "temperature_c": 17.5,
+        "rainfall_mm": 3.2
+    }
+]

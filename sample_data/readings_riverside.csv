@@ -1,0 +1,6 @@
+station_name,date,temperature_c,rainfall_mm
+Riverside,2026-01-01,22.5,0
+Riverside,2026-01-02,23.1,2.4
+Riverside,2026-01-03,,0
+Riverside,2026-01-04,21.8,5.6
+Riverside,2026-01-05,24.0,
