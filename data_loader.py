@@ -1,18 +1,17 @@
-import csv
-import json
+import pandas as pd
 
 
 def load_csv_file(filepath):
-    """Read a CSV file and return a list of dictionaries, one per row."""
-    with open(filepath, newline="") as file:
-        reader = csv.DictReader(file)
-        return list(reader)
+    """Read a CSV file into a DataFrame."""
+    return pd.read_csv(filepath)
 
 
 def load_json_file(filepath):
-    """Read a JSON file and return its contents as a list of dictionaries."""
-    with open(filepath) as file:
-        return json.load(file)
+    """Read a JSON file into a DataFrame."""
+    # convert_dates=False keeps date-looking text as plain text here,
+    # matching what pd.read_csv does, so both sources start out the
+    # same way. Converting to a real date happens later, in cleaning.
+    return pd.read_json(filepath, convert_dates=False)
 
 
 def load_file(filepath):
@@ -26,34 +25,29 @@ def load_file(filepath):
 
 
 def load_multiple_files(filepaths):
-    """Load several CSV/JSON files and combine all records into one list."""
-    all_records = []
+    """Load several CSV/JSON files and combine them into one DataFrame."""
+    all_dataframes = []
     for filepath in filepaths:
         try:
-            records = load_file(filepath)
-            all_records.extend(records)
+            all_dataframes.append(load_file(filepath))
         except FileNotFoundError:
             print(f"Warning: {filepath} was not found, skipping it.")
-        except (json.JSONDecodeError, csv.Error):
-            print(f"Warning: {filepath} could not be read, skipping it.")
-    return all_records
+        except ValueError as error:
+            print(f"Warning: {error}")
+
+    if not all_dataframes:
+        return pd.DataFrame()
+
+    return pd.concat(all_dataframes, ignore_index=True)
 
 
-def validate_records(records, required_fields):
-    """Keep only records that have all the required fields filled in."""
-    valid_records = []
-    skipped_count = 0
+def validate_records(df, required_fields):
+    """Keep only rows that have all required fields filled in."""
+    df = df.copy()
+    # Treat empty text the same as a truly missing value
+    df[required_fields] = df[required_fields].replace("", pd.NA)
 
-    for record in records:
-        is_valid = True
-        for field in required_fields:
-            if field not in record or not record[field]:
-                is_valid = False
-                break
-
-        if is_valid:
-            valid_records.append(record)
-        else:
-            skipped_count += 1
-
-    return valid_records, skipped_count
+    before_count = len(df)
+    valid_df = df.dropna(subset=required_fields)
+    skipped_count = before_count - len(valid_df)
+    return valid_df, skipped_count
