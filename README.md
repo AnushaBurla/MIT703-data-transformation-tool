@@ -14,7 +14,17 @@ This project is being built between Week 5 and Week 12. This README will be upda
 - data_loader.py - done. Loads CSV/JSON files into a pandas DataFrame, combines multiple files, and skips rows missing required fields.
 - data_transformer.py - done. Cleans the date and rainfall fields, adds a calculated Fahrenheit field, merges readings with station metadata, and works out average temperature and total rainfall per station.
 - report_writer.py - done. Saves results to CSV, JSON and a text summary, removes operator_name and operator_email before saving anything, and logs every save (and every time private columns are removed) to pipeline.log.
-- main.py - not started yet.
+- main.py - done. Command-line entry point that runs the whole pipeline: load, clean, merge, optionally filter by station, calculate, and save.
+
+How to run this program
+
+Example (all stations):
+python main.py --readings sample_data/readings_riverside.csv sample_data/readings_hilltop.json --metadata sample_data/station_metadata.csv
+
+Example (one station only):
+python main.py --readings sample_data/readings_riverside.csv sample_data/readings_hilltop.json --metadata sample_data/station_metadata.csv --station Riverside
+
+Run python main.py --help to see all the options.
 
 Planned project structure
 
