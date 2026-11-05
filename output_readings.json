@@ -1,0 +1,50 @@
+[
+  {
+    "station_name":"Riverside",
+    "date":1767225600000,
+    "temperature_c":22.5,
+    "rainfall_mm":0.0,
+    "temperature_f":72.5,
+    "region":"North Valley"
+  },
+  {
+    "station_name":"Riverside",
+    "date":1767312000000,
+    "temperature_c":23.1,
+    "rainfall_mm":2.4,
+    "temperature_f":73.58,
+    "region":"North Valley"
+  },
+  {
+    "station_name":"Riverside",
+    "date":1767484800000,
+    "temperature_c":21.8,
+    "rainfall_mm":5.6,
+    "temperature_f":71.24,
+    "region":"North Valley"
+  },
+  {
+    "station_name":"Riverside",
+    "date":1767571200000,
+    "temperature_c":24.0,
+    "rainfall_mm":0.0,
+    "temperature_f":75.2,
+    "region":"North Valley"
+  },
+  {
+    "station_name":"Hilltop",
+    "date":1767225600000,
+    "temperature_c":18.2,
+    "rainfall_mm":1.1,
+    "temperature_f":64.76,
+    "region":"North Valley"
+  },
+  {
+    "station_name":"Hilltop",
+    "date":1767312000000,
+    "temperature_c":19.0,
+    "rainfall_mm":0.0,
+    "temperature_f":66.2,
+    "region":"North Valley"
+  }
+]

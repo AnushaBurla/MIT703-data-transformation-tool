@@ -1,0 +1,10 @@
+Weather Summary Report
+=======================
+
+Average temperature by station (C):
+  Hilltop: 18.60
+  Riverside: 22.85
+
+Total rainfall by station (mm):
+  Hilltop: 1.10
+  Riverside: 8.00

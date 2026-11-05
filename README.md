@@ -13,7 +13,7 @@ This project is being built between Week 5 and Week 12. This README will be upda
 
 - data_loader.py - done. Loads CSV/JSON files into a pandas DataFrame, combines multiple files, and skips rows missing required fields.
 - data_transformer.py - done. Cleans the date and rainfall fields, adds a calculated Fahrenheit field, merges readings with station metadata, and works out average temperature and total rainfall per station.
-- report_writer.py - not started yet.
+- report_writer.py - done. Saves results to CSV, JSON and a text summary, removes operator_name and operator_email before saving anything, and logs every save (and every time private columns are removed) to pipeline.log.
 - main.py - not started yet.
 
 Planned project structure
@@ -49,7 +49,7 @@ Calculations
 
 Privacy
 
-operator_name and operator_email are personal information about the person responsible for each station, not just weather data. These two fields are only used internally while the program runs and will never be written to any saved report file (grade_report.py in Lab 2 used the same approach: only non-personal fields are saved to output). This will be enforced in report_writer.py, which is not built yet.
+operator_name and operator_email are personal information about the person responsible for each station, not just weather data. These two fields are only used internally while the program runs. report_writer.py removes both columns before saving any CSV or JSON file (the same approach grade_report.py used in Lab 2), and logs it every time this happens so there is a record of it. I tested this directly by searching the saved output files for the operator names and email addresses and confirmed neither appears anywhere in them.
 
 Sample data
 
