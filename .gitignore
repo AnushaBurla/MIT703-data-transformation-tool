@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 output/
 pipeline.log
+.pytest_cache/

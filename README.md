@@ -15,6 +15,14 @@ This project is being built between Week 5 and Week 12. This README will be upda
 - data_transformer.py - done. Cleans the date and rainfall fields, adds a calculated Fahrenheit field, merges readings with station metadata, and works out average temperature and total rainfall per station.
 - report_writer.py - done. Saves results to CSV, JSON and a text summary, removes operator_name and operator_email before saving anything, and logs every save (and every time private columns are removed) to pipeline.log.
 - main.py - done. Command-line entry point that runs the whole pipeline: load, clean, merge, optionally filter by station, calculate, and save.
+- test_data_loader.py, test_data_transformer.py, test_report_writer.py - done. 19 pytest tests in total, covering normal cases, edge cases (empty values, missing stations, no filter set) and error conditions (unsupported file type, missing file) across all three modules.
+- requirements.txt - done.
+
+How to run the tests
+
+Install the packages in requirements.txt first (pip install -r requirements.txt), then run:
+pytest -v
+All 19 tests should pass.
 
 How to run this program
 
